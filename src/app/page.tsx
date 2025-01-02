@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
 return <div className="space-y-2 mt-10">
   <h1 className="text-3xl font-bold sm:text-5xl">Share Your Data</h1>
