@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import JsonDataTable from "./json-data-table";
+import AddJsonDialog from "./add-json-dialog";
 export default function JsonEditor() {
   return (
     <div>
@@ -19,7 +20,7 @@ export default function JsonEditor() {
           <JsonDataTable/>
         </CardContent>
         <CardFooter>
-          <p>Card Footer</p>
+          <AddJsonDialog/>
         </CardFooter>
       </Card>{" "}
     </div>
