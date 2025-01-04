@@ -1,5 +1,25 @@
 import JsonEditor from "@/components/json-editor";
-export default function DashboardPage() {
+import prisma  from "@/lib/db";
+import { currentUser } from "@clerk/nextjs/server";
+export default async function DashboardPage() {
+  const user=await currentUser();
+  if(!user){
+    return null;
+  }
+  const loggedInUser = await prisma.user.findUnique({
+    where: { id: user.id },
+  });
+  if(!loggedInUser){
+    await prisma.user.create({
+      data: {
+        clerkUserId: user.id,
+        name: `${user.firstName} ${user.lastName}`,
+        imageUrl: user.imageUrl,
+        email: user.emailAddresses[0].emailAddress,
+      },
+    });
+  }
+
   return (
     <div>
     <div className="my-8">
