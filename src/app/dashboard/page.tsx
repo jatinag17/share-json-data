@@ -1,10 +1,11 @@
 import JsonEditor from "@/components/json-editor";
 import prisma  from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
+import {redirect} from 'next/navigation';
 export default async function DashboardPage() {
   const user=await currentUser();
   if(!user){
-    return null;
+    return redirect('/');
   }
   const loggedInUser = await prisma.user.findUnique({
     where: { id: user.id },
