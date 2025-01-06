@@ -13,6 +13,7 @@ export default async function DashboardPage() {
   if(!loggedInUser){
     await prisma.user.create({
       data: {
+        
         clerkUserId: user.id,
         name: `${user.firstName} ${user.lastName}`,
         imageUrl: user.imageUrl,
