@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
+
 export async function GET() {
   const { userId } = auth();
   if (!userId) {
